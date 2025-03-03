@@ -1,20 +1,46 @@
-def get_student_score():
-    score = float(input("Enter your score: "))
-    return score
-def calculate_grade(score):
-    if 90 <= score <= 100:
-        return 'A'
-    elif 80 <= score < 90:
-        return 'B'
-    elif 70 <= score < 80:
-        return 'C'
-    elif 60 <= score < 70:
-        return 'D'
-    else:
-        return 'F'
-def main():
-    score = get_student_score()
-    grade = calculate_grade(score)
-    print(f"Your Grade is: {grade}")  
+"""Enhanced Grade Calculator with Function Decomposition"""
 
-main()
+def get_student_score() -> float:
+    """
+    Handles user input to obtain the student's score.
+    
+    Returns:
+        float: The numerical score entered by the user.
+    """
+    while True:
+        try:
+            score = float(input("Enter your score: "))
+            if 0 <= score <= 100:
+                return score
+            print("Please enter a valid score between 0 and 100.")
+        except ValueError:
+            print("Invalid input. Please enter a numerical value.")
+
+def calculate_grade(score: float) -> str:
+    """
+    Determines the letter grade based on the given score.
+
+    Parameters:
+        score (float): The student's numerical score.
+
+    Returns:
+        str: The corresponding letter grade.
+    """
+    if score >= 90:
+        return "A"
+    if score >= 80:
+        return "B"
+    if score >= 70:
+        return "C"
+    if score >= 60:
+        return "D"
+    return "F"
+
+def main():
+    """Main program flow for grade calculation."""
+    student_score = get_student_score()
+    grade = calculate_grade(student_score)
+    print(f"Your Grade is: {grade}")
+
+if __name__ == "__main__":  # Corrected line
+    main()
