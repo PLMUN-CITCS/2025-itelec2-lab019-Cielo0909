@@ -14,7 +14,6 @@ def calculate_grade(score):
     else:
         return 'F'
 
-# Main program flow
 def main():
     score = get_student_score()
     grade = calculate_grade(score)
